@@ -1,6 +1,7 @@
 import json
 import joblib
 import random
+import os
 import nltk
 from nltk.stem import PorterStemmer
 
@@ -15,11 +16,16 @@ def tokenize(sentence):
 def stem_words(words):
     return [stemmer.stem(w) for w in words]
 
+# === Get the absolute path of the current file ===
+BASE_DIR = os.path.dirname(__file__)
+
 # === Load trained model ===
-model = joblib.load("data/chat_model.pkl")
+model_path = os.path.join(BASE_DIR, "data", "chat_model.pkl")
+model = joblib.load(model_path)
 
 # === Load intents and responses ===
-with open("data/intents.json") as file:
+intents_path = os.path.join(BASE_DIR, "data", "intents.json")
+with open(intents_path) as file:
     data = json.load(file)
 
 tag_responses = {

@@ -1,4 +1,12 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+
+from flask import Flask, render_template, request, jsonify
 from flask import Flask, render_template, request
+from t2cchatbot.chatbot import get_bot_response
+from flask import jsonify  # <- needed for returning JSON from /chat
 
 app = Flask(__name__)
 
