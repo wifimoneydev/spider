@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pkl
+*.joblib
+*.DS_Store
+.env
+venv/
+nltk_data/
