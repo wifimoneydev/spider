@@ -2,11 +2,8 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-
 from flask import Flask, render_template, request, jsonify
-from flask import Flask, render_template, request
 from t2cchatbot.chatbot import get_bot_response
-from flask import jsonify  # <- needed for returning JSON from /chat
 
 app = Flask(__name__)
 
@@ -28,9 +25,7 @@ def get_rate_range(material):
 
 def calculate_reward(material, weight):
     """Calculate reward based on material and weight."""
-    # Material names should match with the global RATES keys
     material_lower = material.lower()
-
     for key, (min_rate, max_rate) in RATES.items():
         if material_lower in key.lower():
             reward = (min_rate + max_rate) / 2 * float(weight)
@@ -41,8 +36,9 @@ def get_locations(state):
     """Return the list of locations for a given state."""
     return LOCATIONS.get(state, [])
 
+# ✅ Renamed this function from web_interface to home
 @app.route("/", methods=["GET", "POST"])
-def web_interface():
+def home():
     reward = None
     material = None
     weight = None
@@ -52,12 +48,8 @@ def web_interface():
         material = request.form.get("material")
         weight = request.form.get("weight")
         location = request.form.get("location")
-
-        # Calculate the reward based on material and weight
         if material and weight and location:
             reward = calculate_reward(material, weight)
-        else:
-            reward = None
 
     return render_template("index.html", reward=reward, material=material, weight=weight, location=location, locations=LOCATIONS, rates=RATES)
 
@@ -72,12 +64,8 @@ def process():
         material = request.form.get("material")
         weight = request.form.get("weight")
         location = request.form.get("location")
-
-        # Calculate the reward based on material and weight
         if material and weight and location:
             reward = calculate_reward(material, weight)
-        else:
-            reward = None
 
     return render_template("process.html", reward=reward, material=material, weight=weight, location=location)
 
@@ -85,17 +73,29 @@ def process():
 def about():
     return render_template("about.html")
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
-
 
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
     message = data.get("message", "")
-    response = get_bot_response(message)  # your model's response logic
+    response = get_bot_response(message)
     return jsonify({"response": response})
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        
+        # For now, just log or print (or email/store later)
+        print("Contact form submitted:", name, email, message)
+        
+        # Flash message to confirm (requires session key setup if used)
+        flash("Message sent successfully!")
+        return redirect("/contact")
+
+    return render_template("contact.html")
 
 
 def main():

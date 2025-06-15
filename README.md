@@ -71,7 +71,7 @@ html
 Copy
 Edit
 <input type="number" id="weight" placeholder="Enter weight in kg">
-Accepts weight in kilograms
+Accepts weight in kilograms``
 
 JavaScript ensures only valid numeric input is accepted.
 

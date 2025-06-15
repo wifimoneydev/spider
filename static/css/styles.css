@@ -1,206 +1,278 @@
-/* Reset and Basic Styles */
+/* Reset and Base */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1c1c1c;
-    color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0f0f0f;
+    color: #e0e0e0;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Navigation Bar */
+/* Navbar */
 .navbar {
-    background-color: #2c2c2c;
-    padding: 15px;
-    position: fixed;
-    width: 100%;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .navbar ul {
-    list-style-type: none;
-    text-align: center;
+    list-style: none;
+    display: flex;
+    gap: 2em;
 }
 
-.navbar li {
-    display: inline-block;
-    margin-right: 30px;
-}
-
-.navbar a {
-    color: #f5f5f5;
+.navbar li a {
     text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: color 0.3s ease;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-.navbar a:hover {
-    color: #00b300; /* Green highlight */
+.navbar li a:hover {
+    color: #00ff88;
 }
 
-/* Welcome Section (Centering the Text) */
+/* Welcome Section */
 .welcome-section {
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     text-align: center;
-    color: #f5f5f5;
-    background-color: #333;
+    padding: 2em;
+    background: radial-gradient(circle, #1a1a1a, #0f0f0f);
 }
 
-.welcome-section h1 {
-    font-size: 3rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    margin-bottom: 20px;
+.highlight {
+    color: #00ff88;
 }
 
-.welcome-section p {
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #00b300; /* Green accent */
-}
-
-/* Recycling Info Section */
-.recycling-info {
-    padding: 40px;
-    text-align: center;
-    background-color: #2c2c2c;
-}
-
-.recycling-info h2 {
-    font-size: 2rem;
-    color: #f5f5f5;
-    margin-bottom: 20px;
-}
-
-.recycling-info p {
-    font-size: 1.1rem;
-    color: #b0b0b0;
-    margin-bottom: 20px;
-}
-
-/* About Us Section */
-.about-us {
-    padding: 40px;
-    background-color: #333;
-    text-align: center;
-}
-
-.about-us h2 {
-    font-size: 2rem;
-    color: #f5f5f5;
-    margin-bottom: 15px;
-}
-
-.about-us p {
-    font-size: 1.2rem;
-    color: #b0b0b0;
-    margin-bottom: 30px;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #222;
-    color: #aaa;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 30px;
-}
-
-footer p {
-    font-size: 1rem;
-}
-
-/* Green Button Styles */
 .btn-green {
-    background-color: #00b300;
-    color: #333;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
+    margin-top: 1em;
+    padding: 0.75em 1.5em;
+    background: #00ff88;
+    color: #111;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .btn-green:hover {
-    background-color: #008000;
+    background: #00cc6a;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .navbar li {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .welcome-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .recycling-info h2 {
-        font-size: 1.8rem;
-    }
-
-    .about-us h2 {
-        font-size: 1.8rem;
-    }
+/* Recycling Info */
+.recycling-info {
+    padding: 4em 2em;
+    background-color: #181818;
+    text-align: center;
 }
 
-/* Chatbot Toggle Button */
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.card {
+    background: #222;
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+    transition: transform 0.3s;
+    width: 250px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Chatbot */
 #chat-toggle {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #00a86b;
-    color: white;
-    padding: 14px;
+    background: #00ff88;
+    color: #000;
+    padding: 0.75em 1em;
     border-radius: 50%;
-    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 999;
+    font-size: 1.5em;
+    z-index: 20;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
 }
 
-/* Chatbox Styling */
 #chatbox {
-    display: none;
-    flex-direction: column;
     position: fixed;
     bottom: 80px;
     right: 20px;
     width: 300px;
     height: 400px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: #111;
+    border: 1px solid #00ff88;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 100;
 }
 
 #chat-log {
     flex: 1;
-    padding: 10px;
+    padding: 1em;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 0.9em;
+    background: #181818;
 }
 
 #user-input {
+    padding: 0.8em;
     border: none;
-    padding: 10px;
+    background: #222;
+    color: #fff;
+    border-top: 1px solid #00ff88;
     width: 100%;
-    font-size: 14px;
-    border-top: 1px solid #ccc;
-    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #111;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .info-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 1em;
+    }
+ .card {
+        width: 90%;
+    }
+}
+/* Add to styles.css below existing content */
+
+/* HERO SECTION */
+.process-hero {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    background: linear-gradient(145deg, #0d0d0d, #111);
+    color: white;
+}
+
+.process-hero h1 {
+    font-size: 2.5rem;
+    color: #00ff88;
+    margin-bottom: 0.5rem;
+}
+
+.process-hero p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* FORM CONTAINER */
+.process-form-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #101010;
+}
+
+.form-card {
+    background: #181818;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-card h2 {
+    text-align: center;
+    color: #00ff88;
+    margin-bottom: 1.5rem;
+}
+
+.form-card label {
+    display: block;
+    margin-top: 1rem;
+    color: #ccc;
+}
+
+.form-card input,
+.form-card select {
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
+    border-radius: 8px;
+    border: none;
+    background: #2a2a2a;
+    color: white;
+}
+
+.form-card input::placeholder {
+    color: #888;
+}
+
+.btn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #00ff88;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00cc6a;
+}
+
+/* REWARD DISPLAY */
+.reward-display {
+    text-align: center;
+    margin-top: 2rem;
+    background-color: #121212;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #00ff88;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.reward-display span {
+    font-size: 1.5rem;
+    color: #00ff88;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

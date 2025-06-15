@@ -1,37 +1,43 @@
+<!-- templates/contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Contact Us - Trash2Cash</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">Trash<span class="highlight">2</span>Cash</div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('web_interface') }}">Home</a></li>
-                <li><a href="{{ url_for('about') }}">About Us</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
-                <li><a href="{{ url_for('web_interface') }}">T2C</a></li>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('home') }}" class="logo">Trash2Cash</a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main class="main-content">
-        <section class="content-section">
+    <div class="section" style="margin-top: 80px;">
+        <div class="section-content">
             <h1>Contact Us</h1>
-            <p>If you have any questions, feedback, or just want to say hello — we’d love to hear from you.</p>
-            <div class="contact-details">
-                <p><strong>Email:</strong> support@trash2cash.com</p>
-                <p><strong>Phone:</strong> +234-800-000-0000</p>
-                <p><strong>Instagram:</strong> <a href="#">@trash2cash.ng</a></p>
-            </div>
-        </section>
-    </main>
+            <p>If you have any questions or would like to get involved, reach out to us using the form below.</p>
 
-    <footer class="footer">
-        &copy; 2025 Trash2Cash. All rights reserved.
-    </footer>
+            <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='chatbot/chatbot.js') }}"></script>
 </body>
 </html>
