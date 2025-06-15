@@ -1,8 +1,12 @@
+venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.h5
 *.pkl
-*.joblib
-*.DS_Store
-.env
-venv/
-nltk_data/
+*.zip
+*.dylib
+*.so
+*.egg-info/
+data/
