@@ -10,3 +10,4 @@ __pycache__/
 *.so
 *.egg-info/
 data/
+trash2cash/t2cvision/data/dataset-resized/
